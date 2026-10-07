@@ -8,3 +8,9 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+## Architecture
+- Keep BPM shared identity, navigation and language state in a common site module so every content page remains consistent.
+- Keep each distinct PDF website page in its own TanStack route and render nested event details through an Outlet.
+- Keep registration and contact forms presentation-only until their real services are explicitly requested; never imply an unsent form or payment succeeded.
+- Keep all visual styles and brand values in the global semantic design system so page code does not bypass theme tokens.
