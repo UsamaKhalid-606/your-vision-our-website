@@ -1,24 +1,11 @@
-import { createFileRoute } from "@tanstack/react-router";
-
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
-export const Route = createFileRoute("/")({
-  component: Index,
-});
-
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
+import { createFileRoute, Link } from '@tanstack/react-router';
+import { useEffect, useState } from 'react';
+import { ArrowRight } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Page, Eyebrow, RegisterLink, Ribbon, Venue, RegistrationBand, useLanguage } from '@/components/bpm/site';
+import { topics, pageHead } from '@/lib/bpm-data';
+import conference from '@/assets/conference.jpg';
+import auditorium from '@/assets/auditorium.jpg';
+export const Route=createFileRoute('/')({head:()=>pageHead('BPM 2027 — Bridging Pharma and Medicine','Join physicians, pharmacists, researchers and industry in Riyadh, 27–29 April 2027.'),component:Home});
+function Countdown(){const [remaining,setRemaining]=useState<number|null>(null);const {t}=useLanguage();useEffect(()=>{const tick=()=>setRemaining(Math.max(0,new Date('2027-04-27T09:00:00+03:00').getTime()-Date.now()));tick();const timer=setInterval(tick,1000);return()=>clearInterval(timer)},[]);const seconds=Math.floor((remaining??0)/1000);const values=[Math.floor(seconds/86400),Math.floor(seconds/3600)%24,Math.floor(seconds/60)%60,seconds%60];return <div className="countdown"><div className="countdown-head"><strong>BPM 2027</strong><span>{t('STARTS IN','يبدأ بعد')}</span></div><div className="countdown-numbers">{values.map((v,i)=><div key={i}><strong>{remaining===null?'—':String(v).padStart(2,'0')}</strong><small>{[t('Days','أيام'),t('Hours','ساعات'),t('Minutes','دقائق'),t('Seconds','ثوان')][i]}</small></div>)}</div><p>{t('Opens Tuesday 27 April, 09:00 Riyadh time','يبدأ الثلاثاء 27 أبريل، 09:00 بتوقيت الرياض')}</p></div>}
+function Home(){const {t}=useLanguage();return <Page><section className="hero"><div className="container hero-grid"><div className="hero-copy"><Eyebrow>{t('27–29 APRIL 2027 · RIYADH','27–29 أبريل 2027 · الرياض')}</Eyebrow><h1>{t('Bridging pharma','نربط الصيدلة')}<br/>{t('and','بـ')} <em>{t('medicine.','الطب.')}</em></h1><p>{t('Three days where physicians, pharmacists, researchers and the pharmaceutical industry learn, connect and work together.','ثلاثة أيام يلتقي فيها الأطباء والصيادلة والباحثون وصناعة الدواء ليتعلموا ويتواصلوا ويعملوا معاً.')}</p><div className="hero-actions"><RegisterLink/><Button variant="outline" asChild size="lg"><Link to="/about">{t('About BPM','عن BPM')}</Link></Button></div></div><div className="hero-visual"><img className="hero-photo" src={conference} alt="Speaker addressing a medical conference in Riyadh" width={1024} height={1280}/><Ribbon className="hero-ribbon"/><Countdown/><Venue/></div></div></section><section className="section"><div className="container split-section"><img className="section-photo" src={auditorium} alt="Medical professionals attending a scientific panel" loading="lazy" width={1280} height={960}/><div><Eyebrow>{t('ABOUT BPM','عن BPM')}</Eyebrow><h2>{t('Where medicine, pharmacy and industry meet','حيث يلتقي الطب والصيدلة والصناعة')}</h2><p>{t('BPM is an annual scientific meeting in Riyadh. It puts the people who discover, prescribe and dispense medicines in one room, so new evidence reaches patients faster.','BPM ملتقى علمي سنوي في الرياض يجمع من يكتشفون الأدوية ويصفونها ويصرفونها في مكان واحد، لتصل الأدلة الجديدة إلى المرضى أسرع.')}</p><Link to="/about" className="text-link">{t('More about us','المزيد عنا')}<ArrowRight/></Link></div></div></section><section className="section topics-section"><div className="container"><Eyebrow>{t('SCIENTIFIC TOPICS','المحاور العلمية')}</Eyebrow><h2>{t('Eight topics shaping the future of care','ثمانية محاور ترسم مستقبل الرعاية الصحية')}</h2><div className="topic-grid">{topics.map(([en,ar],i)=><div className="topic-item" key={en}><span>0{i+1}</span><h3>{t(en,ar)}</h3></div>)}</div></div></section><div className="container stats">{[['18,000+',t('Attendees across past editions','حضور الدورات السابقة')],['600+',t('Speakers','متحدث')],['2,100+',t('Research posters','ملصق بحثي')],['300+',t('Exhibitors & sponsors','عارض وراعٍ')]].map(([number,label])=><div key={number}><strong>{number}</strong><span>{label}</span></div>)}</div><section className="section"><div className="container"><Eyebrow>{t('SPONSORS & PARTNERS','الرعاة والشركاء')}</Eyebrow><div className="section-heading"><h2>{t('Made possible by','شركاؤنا في النجاح')}</h2><Link to="/contact" className="text-link">{t('Become a sponsor','كن راعياً')}<ArrowRight/></Link></div>{[['DIAMOND','Crescent Pharma'],['PLATINUM','Nakheel Biotech','Medora Labs'],['GOLD','Alwaha Health','Sahara Systems','Tamr Therapeutics'],['SILVER & STRATEGIC PARTNERS','Najd Supply','Oasis Rx','Falcon Diagnostics','PharmaHub Academy']].map(([tier,...names])=><div className="sponsor-row" key={tier}><p>{tier}</p><div className="sponsor-logos">{names.map(name=><span className="sponsor-name" key={name}>{name}</span>)}</div></div>)}<p className="sponsor-note">{t('Sponsor names and event figures are sample content from the mockup.','أسماء الرعاة وأرقام الفعاليات محتوى تجريبي من التصميم.')}</p></div></section><RegistrationBand/></Page>}
