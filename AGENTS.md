@@ -14,3 +14,4 @@
 - Keep each distinct PDF website page in its own TanStack route and render nested event details through an Outlet.
 - Keep registration and contact forms presentation-only until their real services are explicitly requested; never imply an unsent form or payment succeeded.
 - Keep all visual styles and brand values in the global semantic design system so page code does not bypass theme tokens.
+- Keep redesigned editorial sections in a focused shared module, and activate progressive, reduced-motion-aware scroll reveals through Page so content remains visible without JavaScript.
