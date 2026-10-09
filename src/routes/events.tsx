@@ -1,8 +1,11 @@
-import { createFileRoute, Link, Outlet, useLocation } from '@tanstack/react-router';
-import { ArrowUpRight } from 'lucide-react';
-import { Page, Eyebrow, RegistrationBand, useLanguage } from '@/components/bpm/site';
-import { pageHead, editions } from '@/lib/bpm-data';
-import auditorium from '@/assets/auditorium.jpg';
-import conference from '@/assets/conference.jpg';
-export const Route=createFileRoute('/events')({head:()=>pageHead('Previous events','Browse highlights and numbers from four editions of BPM in Riyadh, 2023–2026.'),component:Events});
-function Events(){const {t}=useLanguage();const path=useLocation().pathname;if(path!=='/events'&&path!=='/events/')return <Outlet/>;return <Page><section className="page-intro"><div className="container"><Eyebrow>{t('PREVIOUS EVENTS','الفعاليات السابقة')}</Eyebrow><h1>{t('Four editions of BPM','أربع دورات من BPM')}</h1><p>{t('Browse the highlights, numbers and photo galleries from every edition since 2023.','استعرض أبرز اللحظات والأرقام والصور من كل دورة منذ 2023.')}</p></div></section><section className="section pt-0"><div className="container event-list">{editions.map((e,i)=><Link to="/events/$year" params={{year:e.year}} className="event-row" key={e.year}><img className="event-thumb" src={i%2?conference:auditorium} alt={`BPM ${e.year} conference illustration`} width={180} height={128} loading="lazy"/><div><h2>BPM {e.year}</h2><p>{e.title}</p><div className="event-meta"><span><strong>{e.attendees}</strong> attendees</span><span><strong>{e.speakers}</strong> speakers</span><span><strong>{e.posters}</strong> posters</span></div></div><div><p>{e.date}</p><p>{e.venue}, Riyadh</p></div><ArrowUpRight size={22}/></Link>)}<p className="sponsor-note">{t('Figures follow the supplied mockup. Photos are illustrative, not archival event photos.','الأرقام من التصميم المرفق. الصور توضيحية وليست صوراً أرشيفية للفعاليات.')}</p></div></section><RegistrationBand/><Outlet/></Page>}
+import { createFileRoute, Outlet, useLocation } from '@tanstack/react-router';
+import { Page, RegistrationBand, useLanguage } from '@/components/bpm/site';
+import { EventArchive } from '@/components/bpm/editorial-sections';
+import { pageHead } from '@/lib/bpm-data';
+export const Route = createFileRoute('/events')({ head: () => pageHead('Previous events', 'Browse highlights and numbers from four editions of BPM in Riyadh, 2023–2026.'), component: Events });
+function Events() {
+ const { t } = useLanguage();
+ const path = useLocation().pathname;
+ if (path !== '/events' && path !== '/events/') return <Outlet />;
+ return <Page><section className="archive-intro"><div className="container"><div className="archive-intro-top"><p className="chapter-number">{t('The BPM archive', 'أرشيف BPM')}</p><span>2023 — 2026</span></div><div className="editorial-heading"><h1>{t('Four editions.', 'أربع دورات.')}<br /><em>{t('Countless connections.', 'روابط لا تُحصى.')}</em></h1><p>{t('The people, the science and the moments that brought medicine and pharmacy closer together.', 'الأشخاص والعلم واللحظات التي قرّبت الطب والصيدلة من بعضهما.')}</p></div></div></section><EventArchive /><RegistrationBand /><Outlet /></Page>;
+}
