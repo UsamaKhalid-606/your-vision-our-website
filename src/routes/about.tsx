@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { ArrowRight } from 'lucide-react';
 import { Page, RegistrationBand, useLanguage } from '@/components/bpm/site';
-import { pageHead, editions } from '@/lib/bpm-data';
+import { Journey } from '@/components/bpm/editorial-sections';
+import { pageHead } from '@/lib/bpm-data';
 import mission from '@/assets/mission.jpg';
 import auditorium from '@/assets/auditorium.jpg';
 import pattern from '@/assets/bpm-pattern.jpg.asset.json';
@@ -38,7 +39,7 @@ function About() {
     [t('Events team', 'فريق الفعاليات'), t('The people behind registration, the venue and our sponsor partnerships.', 'الأشخاص المسؤولون عن التسجيل والموقع وشراكات الرعاية.')],
    ].map(([title, desc], i) => <div className="organizer" key={title}><p className="organizer-index">0{i + 1}</p><h3>{title}</h3><p>{desc}</p></div>)}</div>
   </div></section>
-  <section className="section history-section"><div className="container"><div className="section-heading"><div><p className="chapter-number">{t('03 / A shared journey', '03 / رحلة مشتركة')}</p><h2>{t('One year at a time.', 'عاماً بعد عام.')}</h2></div><Link to="/events" className="text-link">{t('Explore past editions', 'استكشف الدورات السابقة')}<ArrowRight /></Link></div><div className="timeline">{[...editions].reverse().map(e => <div key={e.year}><span>{e.year}</span><strong>{e.title}</strong><p>{e.attendees} attendees · {e.venue}, Riyadh</p></div>)}<div><span>2027</span><strong>{t('The next conversation', 'الحوار القادم')}</strong><Link to="/register" className="text-link">27–29 April · Riyadh<ArrowRight /></Link></div></div></div></section>
+  <Journey />
   <RegistrationBand />
  </Page>;
 }
