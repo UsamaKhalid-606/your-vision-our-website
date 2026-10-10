@@ -5,3 +5,5 @@
 - [x] Refresh the website with prominent branding, navy-led elegance, Cormorant Garamond/Karla, and human editorial storytelling.
 - [x] Redesign home topics and partners, About journey, and previous events with more expressive layouts.
 - [x] Add restrained, accessible movement across the website and verify the updated pages and navigation.
+- [ ] Refine partner presentation, redesign the About opening, and polish shared website details.
+- [ ] Verify the refined pages, navigation, and narrow-screen layout.
