@@ -26,7 +26,7 @@ export function Partners() {
  const { t } = useLanguage();
  return <section className="section partner-section"><div className="container">
   <div className="editorial-heading"><div><p className="chapter-number">{t('02 / Shared ambition', '02 / طموح مشترك')}</p><h2>{t('Progress is', 'التقدم')}<br /><em>{t('a collective effort.', 'جهد جماعي.')}</em></h2></div><Link to="/contact" className="text-link">{t('Become a partner', 'كن شريكاً')}<ArrowRight /></Link></div>
-  <div className="partner-roster">{partners.map((group, i) => <div className={`partner-tier partner-tier-${i}`} key={group.tier} data-reveal><div className="partner-tier-label"><span>0{i + 1}</span><p>{t(group.tier, group.ar)}</p></div><div className="partner-names">{group.names.map(name => <div className="partner-identity" key={name}><span className="partner-monogram" aria-hidden="true">{name.split(' ').map(word => word[0]).join('')}</span><span>{name}</span></div>)}</div></div>)}</div>
+   <div className="partner-gallery">{partners.map((group, i) => <div className={`partner-level partner-level-${i}`} key={group.tier} data-reveal><div className="partner-level-heading"><span aria-hidden="true" /><p>{t(group.tier, group.ar)}</p><span aria-hidden="true" /></div><div className="partner-wordmarks">{group.names.map(name => <div className="partner-wordmark" key={name}><span>{name}</span></div>)}</div></div>)}</div>
   <p className="sponsor-note">{t('Sponsor names and event figures are sample content from the mockup.', 'أسماء الرعاة وأرقام الفعاليات محتوى تجريبي من التصميم.')}</p>
  </div></section>;
 }
