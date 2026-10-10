@@ -1,21 +1,20 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
-import { ArrowRight } from 'lucide-react';
+import { ArrowDown } from 'lucide-react';
 import { Page, RegistrationBand, useLanguage } from '@/components/bpm/site';
 import { Journey } from '@/components/bpm/editorial-sections';
 import { pageHead } from '@/lib/bpm-data';
 import mission from '@/assets/mission.jpg';
-import auditorium from '@/assets/auditorium.jpg';
 import pattern from '@/assets/bpm-pattern.jpg.asset.json';
 export const Route = createFileRoute('/about')({ head: () => pageHead('About BPM', 'Our mission is to bring medicine and pharmacy into one conversation, so better evidence reaches patients sooner.'), component: About });
 function About() {
  const { t } = useLanguage();
  return <Page>
-  <section className="brand-story about-cover">
-   <img src={auditorium} alt="Medical professionals gathered for a scientific conversation" className="story-background" width={1280} height={960} />
-   <div className="container story-content">
-    <div className="story-kicker"><span>{t('BPM / OUR STORY', 'BPM / قصتنا')}</span><span>{t('RIYADH · SINCE 2023', 'الرياض · منذ 2023')}</span></div>
-    <div className="about-cover-title"><p className="about-cover-signature">BPM</p><h1 className="story-title">{t('Bridging Pharma', 'نربط الصيدلة')}<br /><em>{t('and Medicine.', 'بالطب.')}</em></h1><p className="about-cover-subtitle">{t('Different disciplines. A shared purpose.', 'تخصصات مختلفة. هدف مشترك.')}</p></div>
-    <div className="about-cover-bottom"><p className="story-intro">{t('Behind every discovery is a conversation. BPM brings physicians, pharmacists, researchers and industry together — with better care at the heart of it all.', 'وراء كل اكتشاف حوار. يجمع BPM الأطباء والصيادلة والباحثين والصناعة، وتبقى الرعاية الأفضل في قلب كل ما نقوم به.')}</p><a href="#our-mission" className="about-purpose-link"><span>{t('Our shared purpose', 'هدفنا المشترك')}</span><ArrowRight size={21} /></a></div>
+  <section className="about-human-cover">
+   <img src={mission} alt="Physician and pharmacist sharing medical knowledge" className="human-cover-photo" width={1024} height={1024} />
+   <div className="container human-cover-content">
+    <div className="human-cover-top"><span>{t('OUR STORY / RIYADH', 'قصتنا / الرياض')}</span><span>{t('SINCE 2023', 'منذ 2023')}</span></div>
+    <div className="human-cover-heading"><p>{t('Bridging Pharma and Medicine', 'نربط الصيدلة بالطب')}</p><h1>{t('About', 'عن')} <em>BPM.</em></h1></div>
+    <div className="human-cover-bottom"><p>{t('Behind every discovery is a conversation. We bring medicine and pharmacy together, with better care at the heart of it all.', 'وراء كل اكتشاف حوار. نجمع الطب والصيدلة، وتبقى الرعاية الأفضل في قلب كل ما نقوم به.')}</p><a href="#our-mission" className="human-cover-scroll"><span>{t('Our purpose', 'هدفنا')}</span><ArrowDown size={22} /></a></div>
    </div>
   </section>
   <img src={pattern.url} alt="" className="story-pattern-strip" />
