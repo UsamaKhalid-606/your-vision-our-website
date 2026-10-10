@@ -7,3 +7,4 @@
 - [x] Add restrained, accessible movement across the website and verify the updated pages and navigation.
 - [x] Refine partner presentation, redesign the About opening, and polish shared website details.
 - [x] Verify the refined pages, navigation, and narrow-screen layout.
+- [ ] Create a distinctly new About opening and previous-events composition; verify both.
