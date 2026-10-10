@@ -10,13 +10,12 @@ export const Route = createFileRoute('/about')({ head: () => pageHead('About BPM
 function About() {
  const { t } = useLanguage();
  return <Page>
-  <section className="brand-story">
+  <section className="brand-story about-cover">
    <img src={auditorium} alt="Medical professionals gathered for a scientific conversation" className="story-background" width={1280} height={960} />
    <div className="container story-content">
     <div className="story-kicker"><span>{t('BPM / OUR STORY', 'BPM / قصتنا')}</span><span>{t('RIYADH · SINCE 2023', 'الرياض · منذ 2023')}</span></div>
-    <h1 className="story-title">{t('Bridging pharma.', 'نربط الصيدلة.')}<br /><em>{t('Bringing people together.', 'ونجمع الناس.')}</em></h1>
-    <p className="story-intro">{t('Behind every discovery is a conversation. BPM brings physicians, pharmacists, researchers and industry together — with better care at the heart of it all.', 'وراء كل اكتشاف حوار. يجمع BPM الأطباء والصيادلة والباحثين والصناعة، وتبقى الرعاية الأفضل في قلب كل ما نقوم به.')}</p>
-    <div className="story-bottom"><a href="#our-mission" className="text-link">{t('The purpose that brings us together', 'الهدف الذي يجمعنا')}<ArrowRight size={17} /></a><span className="edition-note">{t('An annual scientific meeting. A shared commitment to care.', 'ملتقى علمي سنوي. والتزام مشترك بالرعاية.')}</span></div>
+    <div className="about-cover-title"><p className="about-cover-signature">BPM</p><h1 className="story-title">{t('Bridging Pharma', 'نربط الصيدلة')}<br /><em>{t('and Medicine.', 'بالطب.')}</em></h1><p className="about-cover-subtitle">{t('Different disciplines. A shared purpose.', 'تخصصات مختلفة. هدف مشترك.')}</p></div>
+    <div className="about-cover-bottom"><p className="story-intro">{t('Behind every discovery is a conversation. BPM brings physicians, pharmacists, researchers and industry together — with better care at the heart of it all.', 'وراء كل اكتشاف حوار. يجمع BPM الأطباء والصيادلة والباحثين والصناعة، وتبقى الرعاية الأفضل في قلب كل ما نقوم به.')}</p><a href="#our-mission" className="about-purpose-link"><span>{t('Our shared purpose', 'هدفنا المشترك')}</span><ArrowRight size={21} /></a></div>
    </div>
   </section>
   <img src={pattern.url} alt="" className="story-pattern-strip" />
