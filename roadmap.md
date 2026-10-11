@@ -8,3 +8,5 @@
 - [x] Refine partner presentation, redesign the About opening, and polish shared website details.
 - [x] Verify the refined pages, navigation, and narrow-screen layout.
 - [x] Create a distinctly new About opening and previous-events composition; verify both.
+- [x] Redesign the scientific conversation with a new editorial composition and verify desktop/mobile.
+- [x] Export and visually inspect a downloadable PDF covering every website page.
