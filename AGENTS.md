@@ -15,3 +15,4 @@
 - Keep registration and contact forms presentation-only until their real services are explicitly requested; never imply an unsent form or payment succeeded.
 - Keep all visual styles and brand values in the global semantic design system so page code does not bypass theme tokens.
 - Keep redesigned editorial sections in a focused shared module, and activate progressive, reduced-motion-aware scroll reveals through Page so content remains visible without JavaScript.
+- Export website mockups from rendered pages, including every event detail, so downloads reflect the live design rather than a separate reconstruction.
