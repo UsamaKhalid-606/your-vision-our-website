@@ -16,9 +16,9 @@ const partners = [
 
 export function ScientificTopics() {
  const { t } = useLanguage();
- return <section className="section science-section"><div className="container">
+  return <section className="section science-conversation"><div className="container">
   <div className="editorial-heading"><div><p className="chapter-number">{t('01 / The scientific conversation', '01 / الحوار العلمي')}</p><h2>{t('Eight perspectives.', 'ثمانية آفاق.')}<br /><em>{t('A healthier tomorrow.', 'غد أكثر صحة.')}</em></h2></div><span className="section-index">BPM 2027 / {t('SCIENTIFIC TOPICS', 'المحاور العلمية')}</span></div>
-  <div className="science-grid">{topics.map(([en, ar], i) => { const Icon = topicIcons[i] ?? HeartPulse; return <article className="science-topic" key={en} data-reveal><div className="science-topic-top"><Icon size={27} strokeWidth={1.3} /><span>0{i + 1}</span></div><h3>{t(en, ar)}</h3><div className="topic-rule" /></article>; })}</div>
+   <div className="conversation-layout"><figure className="conversation-image" data-reveal><img src={mission} alt={t('Healthcare researchers exchanging ideas', 'باحثون في الرعاية الصحية يتبادلون الأفكار')} width={1280} height={960} loading="lazy" /><figcaption><span className="conversation-count">08</span><span>{t('Perspectives shaping', 'آفاق ترسم')}<br />{t('the future of care.', 'مستقبل الرعاية.')}</span></figcaption></figure><div className="conversation-topics">{topics.map(([en, ar], i) => { const Icon = topicIcons[i] ?? HeartPulse; return <article className="conversation-topic" key={en} data-reveal><div className="conversation-topic-meta"><span>0{i + 1}</span><Icon size={25} strokeWidth={1.25} /></div><h3>{t(en, ar)}</h3></article>; })}</div></div>
  </div></section>;
 }
 
